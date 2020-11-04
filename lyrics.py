@@ -98,9 +98,9 @@ st.write('You selected:', option1)
 if option1 =="Cumulative Monthly Count":
     
     index= df_final.groupby(["Month_n"])["Pageviews"].sum().index
-    st.write(index)
+
     values = df_final.groupby("Month_n")["Pageviews"].sum().values
-    st.write(values)
+
     st.write('')
     st.write('')
     st.write('')
