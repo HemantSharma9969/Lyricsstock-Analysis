@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import date
+import plotly.graph_objs as go
 
 
 
@@ -215,7 +216,18 @@ if option2 =='Top 10 Page Viewed on the Website':
 
 
 
-st.header("Visitors from countries")
-countries =df_country["Country"].unique().tolist()
-st.write(countries)
+st.header("Visitors by countries")
+data = dict(
+        type = 'choropleth',
+        colorscale = 'Viridis',
+        locations = df_country['Country'],
+        locationmode = "country names",
+        z = df_country['Users'],
+        colorbar = {'title' : 'Number of Visitors'},
+      )
+layout = dict(geo = dict(projection = {'type':'mercator'}),width=800, height=800)
+
+choromap = go.Figure(data = [data],layout = layout)
+
+st.plotly_chart(choromap)
 
