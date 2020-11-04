@@ -19,7 +19,7 @@ df3 = pd.read_csv("Date_Page (3).csv")
 
 df_country = pd.read_csv("Country.csv")
 df_city =pd.read_csv("City.csv")
-df_browser = pd.read_csv("browser.csv")
+df_browser = pd.read_csv("Browser.csv")
 
 
 df_country["Users"]= df_country["Users"].str.replace(",",'')
