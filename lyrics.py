@@ -102,7 +102,7 @@ if option1 =="Cumulative Monthly Count":
     st.write('')
     st.write('')
     fig, ax = plt.subplots(figsize=(7, 3))
-    ax.bar(index,values)
+    ax.bar(str(index),values)
     ax.set_xlabel("Months",fontsize=10)
     ax.set_ylabel("Count of Users",fontsize=10)
     ax.set_xticklabels(index,rotation=90 )
