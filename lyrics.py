@@ -17,8 +17,8 @@ df1 = pd.read_csv("Date_Page.csv")
 df2 = pd.read_csv("Date_Page (2).csv")
 df3 = pd.read_csv("Date_Page (3).csv")
 
-df_country = pd.read_csv("country.csv")
-df_city =pd.read_csv("city.csv")
+df_country = pd.read_csv("Country.csv")
+df_city =pd.read_csv("City.csv")
 df_browser = pd.read_csv("browser.csv")
 
 
