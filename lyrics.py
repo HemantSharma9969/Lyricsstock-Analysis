@@ -14,6 +14,32 @@ st.write("")
 st.write("")
 st.write("")
 
+st.header("Visitors by countries")
+data = dict(
+        type = 'choropleth',
+        colorscale = 'Viridis',
+        locations = df_country['Country'],
+        locationmode = "country names",
+        z = df_country['Users'],
+        colorbar = {'title' : 'Number of Visitors'},
+      )
+layout = dict(geo = dict(projection = {'type':'mercator'}),width=800, height=800)
+
+choromap = go.Figure(data = [data],layout = layout)
+
+st.plotly_chart(choromap)
+
+
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+
+
+
+
 df1 = pd.read_csv("Date_Page.csv")
 df2 = pd.read_csv("Date_Page (2).csv")
 df3 = pd.read_csv("Date_Page (3).csv")
@@ -75,7 +101,7 @@ st.write("Total hours spend on the website by the visitors in hours : ",df_final
 
 
 st.title('Line Charts')
-option = st.selectbox("",('Day wise', 'Monthtly wise', 'Cumulative Daily wise','Averge time on the Website Daily in seconds wise'))
+option = st.selectbox("",('Day wise', 'Monthtly wise', 'Cumulative Day wise','Averge time(seconds) on the Website'))
 
 st.write('You selected:', option)
 
@@ -83,20 +109,20 @@ if option=='Day wise' :
     st.line_chart(df_final.groupby("Date")["Pageviews"].sum())
 if option=='Monthtly wise':
     st.line_chart(df_final.groupby("Month")["Pageviews"].sum())
-if option =="Cumulative Daily wise":
+if option =="Cumulative Day wise":
     st.line_chart(df_final.groupby("Day")["Pageviews"].sum())
 
-if option =='Averge time on the Website Daily in seconds wise':
+if option =='Averge time(seconds) on the Website':
     st.line_chart(df_final.groupby("Date")["Avg. Time on Page"].sum())
 
 
 
 st.title('Bar Chart ')
-option1 = st.selectbox("",('Cumulative Monthly Count' ,'Cumulative Daily Count'))
+option1 = st.selectbox("",('Cumulative Monthly Visitors Count' ,'Cumulative Weekly Visitors Count'))
 
 st.write('You selected:', option1)
 
-if option1 =="Cumulative Monthly Count":
+if option1 =="Cumulative Monthly Visitors Count":
     
     index= df_final.groupby(["Month_n"])["Pageviews"].sum().index
 
@@ -115,7 +141,7 @@ if option1 =="Cumulative Monthly Count":
     
 
 
-if option1=="Cumulative Daily Count":
+if option1=="Cumulative Weekly Visitors Count":
     index= df_final.groupby(["Weekday"])["Pageviews"].sum().index
     values = df_final.groupby("Weekday")["Pageviews"].sum().values
     st.write('')
@@ -147,12 +173,12 @@ df_country["Pages / Session"] = df_country["Pages / Session"].astype(float)
 
 
 st.title("Bar Charts")
-option2 = st.selectbox("",('Number of visitors from different countries Top 5' ,'Number of visitors from different cities Top 20',
-                           'Visitors as per Browser','Top 10 Page Viewed on the Website','Avg. Session Duration country wise Top 10'))
+option2 = st.selectbox("",('Number of visitors from different countries (Top 5)' ,'Number of visitors from different cities (Top 20)',
+                           'Visitors by Browser','Page Viewed on the Website (Top 10)','Avg. Session Duration country wise (Top 10)'))
 
 st.write('You selected:', option2)
 
-if option2=='Number of visitors from different countries Top 5':
+if option2=='Number of visitors from different countries (Top 5)':
     st.write('')
     st.write('')
     st.write('')
@@ -163,7 +189,7 @@ if option2=='Number of visitors from different countries Top 5':
     ax.set_xticklabels( df_country["Country"][0:5],rotation=90 )
     st.pyplot(fig)
 
-if option2=="Avg. Session Duration country wise Top 10":
+if option2=="Avg. Session Duration country wise (Top 10)":
     st.write('')
     st.write('')
     st.write('')
@@ -175,7 +201,7 @@ if option2=="Avg. Session Duration country wise Top 10":
     st.pyplot(fig)
 
 
-if option2=="Number of visitors from different cities Top 20":
+if option2=="Number of visitors from different cities (Top 20)":
     st.write('')
     st.write('')
     st.write('')
@@ -187,7 +213,7 @@ if option2=="Number of visitors from different cities Top 20":
     st.pyplot(fig)
 
 
-if option2 =="Visitors as per Browser":
+if option2 =="Visitors by Browser":
     st.write('')
     st.write('')
     st.write('')
@@ -199,7 +225,7 @@ if option2 =="Visitors as per Browser":
     st.pyplot(fig)
 
 
-if option2 =='Top 10 Page Viewed on the Website':
+if option2 =='Page Viewed on the Website (Top 10)':
 
     st.write('')
     st.write('')
@@ -216,18 +242,4 @@ if option2 =='Top 10 Page Viewed on the Website':
 
 
 
-st.header("Visitors by countries")
-data = dict(
-        type = 'choropleth',
-        colorscale = 'Viridis',
-        locations = df_country['Country'],
-        locationmode = "country names",
-        z = df_country['Users'],
-        colorbar = {'title' : 'Number of Visitors'},
-      )
-layout = dict(geo = dict(projection = {'type':'mercator'}),width=800, height=800)
-
-choromap = go.Figure(data = [data],layout = layout)
-
-st.plotly_chart(choromap)
 
