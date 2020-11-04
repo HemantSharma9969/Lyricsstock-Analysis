@@ -96,13 +96,17 @@ option1 = st.selectbox("",('Cumulative Monthly Count' ,'Cumulative Daily Count')
 st.write('You selected:', option1)
 
 if option1 =="Cumulative Monthly Count":
+    
     index= df_final.groupby(["Month_n"])["Pageviews"].sum().index
+    st.write(index)
     values = df_final.groupby("Month_n")["Pageviews"].sum().values
+    st.write(values)
     st.write('')
     st.write('')
     st.write('')
     fig, ax = plt.subplots(figsize=(7, 3))
-    ax.bar(str(index),values)
+    
+    ax.bar(index,values)
     ax.set_xlabel("Months",fontsize=10)
     ax.set_ylabel("Count of Users",fontsize=10)
     ax.set_xticklabels(index,rotation=90 )
