@@ -9,6 +9,13 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
+st.title("Lyricsstock.com analysis")
+st.write("from May-20 to Nov-2020")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+
 df1 = pd.read_csv("Date_Page.csv")
 df2 = pd.read_csv("Date_Page (2).csv")
 df3 = pd.read_csv("Date_Page (3).csv")
