@@ -9,13 +9,13 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-df1 = pd.read_csv("C:\\Users\\Hemant\\Desktop\\Projects\\Lyrics\\Date_Page.csv")
-df2 = pd.read_csv("C:\\Users\\Hemant\\Desktop\\Projects\\Lyrics\\Date_Page (2).csv")
-df3 = pd.read_csv("C:\\Users\\Hemant\\Desktop\\Projects\\Lyrics\\Date_Page (3).csv")
+df1 = pd.read_csv("Date_Page.csv")
+df2 = pd.read_csv("Date_Page (2).csv")
+df3 = pd.read_csv("Date_Page (3).csv")
 
-df_country = pd.read_csv("C:\\Users\\Hemant\\Desktop\\Projects\\Lyrics\\country.csv")
-df_city =pd.read_csv("C:\\Users\\Hemant\\Desktop\\Projects\\Lyrics\\city.csv")
-df_browser = pd.read_csv("C:\\Users\\Hemant\\Desktop\\Projects\\Lyrics\\browser.csv")
+df_country = pd.read_csv("country.csv")
+df_city =pd.read_csv("city.csv")
+df_browser = pd.read_csv("browser.csv")
 
 
 df_country["Users"]= df_country["Users"].str.replace(",",'')
