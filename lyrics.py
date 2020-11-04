@@ -14,28 +14,7 @@ st.write("")
 st.write("")
 st.write("")
 
-st.header("Visitors by countries")
-data = dict(
-        type = 'choropleth',
-        colorscale = 'Viridis',
-        locations = df_country['Country'],
-        locationmode = "country names",
-        z = df_country['Users'],
-        colorbar = {'title' : 'Number of Visitors'},
-      )
-layout = dict(geo = dict(projection = {'type':'mercator'}),width=800, height=800)
 
-choromap = go.Figure(data = [data],layout = layout)
-
-st.plotly_chart(choromap)
-
-
-st.write("")
-st.write("")
-st.write("")
-st.write("")
-st.write("")
-st.write("")
 
 
 
@@ -100,6 +79,30 @@ st.write("Total number of pages viewed till now : ",df_final["Pageviews"].sum())
 st.write("Total hours spend on the website by the visitors in hours : ",df_final["Avg. Time on Page"].sum()/3600)
 
 
+st.header("Visitors by countries")
+data = dict(
+        type = 'choropleth',
+        colorscale = 'Viridis',
+        locations = df_country['Country'],
+        locationmode = "country names",
+        z = df_country['Users'],
+        colorbar = {'title' : 'Number of Visitors'},
+      )
+layout = dict(geo = dict(projection = {'type':'mercator'}),width=800, height=800)
+
+choromap = go.Figure(data = [data],layout = layout)
+
+st.plotly_chart(choromap)
+
+
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+
+
 st.title('Line Charts')
 option = st.selectbox("",('Day wise', 'Monthtly wise', 'Cumulative Day wise','Averge time(seconds) on the Website'))
 
@@ -115,7 +118,12 @@ if option =="Cumulative Day wise":
 if option =='Averge time(seconds) on the Website':
     st.line_chart(df_final.groupby("Date")["Avg. Time on Page"].sum())
 
-
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
 
 st.title('Bar Chart ')
 option1 = st.selectbox("",('Cumulative Monthly Visitors Count' ,'Cumulative Weekly Visitors Count'))
@@ -155,8 +163,12 @@ if option1=="Cumulative Weekly Visitors Count":
     st.pyplot(fig)
 
 
-
-
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
 
 
 
